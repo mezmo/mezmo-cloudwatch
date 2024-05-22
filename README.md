@@ -69,5 +69,3 @@ Copyright © [Mezmo](https://mezmo.com), released under an MIT license. See the 
 
 ## Contributing
 Contributions are always welcome. See the [contributing guide](/CONTRIBUTING.md) to learn how you can help.
-
-*Happy Logging!*
