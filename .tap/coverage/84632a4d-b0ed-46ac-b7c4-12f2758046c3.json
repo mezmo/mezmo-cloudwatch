@@ -1,0 +1,153 @@
+{
+  "result": [
+    {
+      "scriptId": "640",
+      "url": "file:///Users/greg.janco/git/mezmo-cloudwatch/index.js",
+      "functions": [
+        {
+          "functionName": "",
+          "ranges": [
+            {
+              "startOffset": 0,
+              "endOffset": 3486,
+              "count": 1
+            }
+          ],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "getConfig",
+          "ranges": [
+            {
+              "startOffset": 695,
+              "endOffset": 1155,
+              "count": 2
+            },
+            {
+              "startOffset": 885,
+              "endOffset": 925,
+              "count": 1
+            },
+            {
+              "startOffset": 962,
+              "endOffset": 1136,
+              "count": 1
+            }
+          ],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "parseEvent",
+          "ranges": [
+            {
+              "startOffset": 1187,
+              "endOffset": 1296,
+              "count": 1
+            }
+          ],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "prepareLogs",
+          "ranges": [
+            {
+              "startOffset": 1334,
+              "endOffset": 2044,
+              "count": 2
+            }
+          ],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "",
+          "ranges": [
+            {
+              "startOffset": 1416,
+              "endOffset": 2041,
+              "count": 2
+            },
+            {
+              "startOffset": 1914,
+              "endOffset": 2016,
+              "count": 1
+            }
+          ],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "sendLine",
+          "ranges": [
+            {
+              "startOffset": 2063,
+              "endOffset": 3220,
+              "count": 2
+            },
+            {
+              "startOffset": 2207,
+              "endOffset": 3219,
+              "count": 0
+            }
+          ],
+          "isBlockCoverage": true
+        },
+        {
+          "functionName": "interval",
+          "ranges": [
+            {
+              "startOffset": 2583,
+              "endOffset": 2671,
+              "count": 0
+            }
+          ],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "errorFilter",
+          "ranges": [
+            {
+              "startOffset": 2686,
+              "endOffset": 2796,
+              "count": 0
+            }
+          ],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [
+            {
+              "startOffset": 2802,
+              "endOffset": 3119,
+              "count": 0
+            }
+          ],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "",
+          "ranges": [
+            {
+              "startOffset": 3121,
+              "endOffset": 3217,
+              "count": 0
+            }
+          ],
+          "isBlockCoverage": false
+        },
+        {
+          "functionName": "handler",
+          "ranges": [
+            {
+              "startOffset": 3238,
+              "endOffset": 3403,
+              "count": 0
+            }
+          ],
+          "isBlockCoverage": false
+        }
+      ]
+    }
+  ],
+  "timestamp": 994434.773001,
+  "source-map-cache": {}
+}
