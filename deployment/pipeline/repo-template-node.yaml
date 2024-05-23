@@ -1,0 +1,12 @@
+_template_version: v1.5.13
+allowMissing: null
+alwaysLinkToLastBuild: null
+default_branch: main
+feature_branches: false
+hotfix_branches: false
+junit: null
+keepAll: null
+publishHTML: null
+reportDir: null
+reportFiles: null
+reportName: null
