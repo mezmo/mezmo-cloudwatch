@@ -1,6 +1,6 @@
 {
   "name": "mezmo-cloudwatch",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Lambda Functions to Stream Logs from AWS CloudWatch to Mezmo Pipeline",
   "main": "index.js",
   "scripts": {
@@ -17,16 +17,16 @@
     "extends": "semantic-release-config-logdna"
   },
   "eslintConfig": {
-    "root": true
-  , "ignorePatterns": [
-      "node_modules/"
-    , "coverage/"
-    , "deployment/"
-    ]
-  , "extends": "logdna"
-  , "parserOptions": {
-      "ecmaVersion": 2022
-    , "type": "script"
+    "root": true,
+    "ignorePatterns": [
+      "node_modules/",
+      "coverage/",
+      "deployment/"
+    ],
+    "extends": "logdna",
+    "parserOptions": {
+      "ecmaVersion": 2022,
+      "type": "script"
     }
   },
   "dependencies": {
