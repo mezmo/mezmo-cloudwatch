@@ -9,6 +9,12 @@
     "release": "semantic-release",
     "release:dry": "npm run release -- --dry-run --no-ci --branches ${BRANCH_NAME:-master}"
   },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "extends": "semantic-release-config-logdna"
+  },
   "eslintConfig": {
     "root": true,
     "ignorePatterns": [
