@@ -116,6 +116,7 @@ pipeline {
 
       environment {
         GITHUB_TOKEN = credentials('github-api-token')
+        NPM_TOKEN = credentials('npm-publish-token')
       }
 
       steps {
