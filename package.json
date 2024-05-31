@@ -1,6 +1,6 @@
 {
   "name": "mezmo-cloudwatch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lambda Functions to Stream Logs from AWS CloudWatch to Mezmo Pipeline",
   "main": "index.js",
   "scripts": {

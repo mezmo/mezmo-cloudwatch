@@ -1,5 +1,12 @@
 ## Changelog
 
+## [1.0.1](https://github.com/mezmo/mezmo-cloudwatch/compare/v1.0.0...v1.0.1) (2024-05-31)
+
+
+### Bug Fixes
+
+* **release**: consolidating config (#7) [41bce10](https://github.com/mezmo/mezmo-cloudwatch/commit/41bce10e95713d266cd07151b8895a035215420a) - GitHub, closes: [#7](https://github.com/mezmo/mezmo-cloudwatch/issues/7)
+
 # 1.0.0 (2024-05-30)
 
 
