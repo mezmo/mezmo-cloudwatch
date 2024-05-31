@@ -1,18 +1,12 @@
 'use strict'
 
-const URL = 'https://ingest.pipeline.com'
-const KEY = 'abc123'
-process.env.PIPELINE_KEY = KEY
-process.env.PIPELINE_URL = URL
+process.env.PIPELINE_KEY = 'abc123'
+process.env.PIPELINE_URL = 'https://ingest.pipeline.com'
 
 const {test} = require('tap')
 const nock = require('nock')
 const config = require('../../config.js')
 const pkg = require('../../package.json')
-
-config.validateEnvVars()
-
-// Internal Modules
 const index = require('../../index.js')
 
 const rawEvent = {
@@ -48,29 +42,29 @@ test('integration tests', async (t) => {
 
   t.test('successful send message', async (t) => {
 
-    nock(
-      config.get('pipeline-url'),
-      {
-        reqheaders:
-        {
-          'authorization': config.get('pipeline-key')
-        , 'user-agent': `${pkg.name}/${pkg.version}`
-        }
+    nock(config.get('pipeline-url'), {
+      reqheaders: {
+        'authorization': config.get('pipeline-key')
+      , 'user-agent': `${pkg.name}/${pkg.version}`
       }
-    ).persist().post('/', expectedReqBody).reply(200, 'OK')
+    })
+      .post('/', expectedReqBody)
+      .reply(200, 'OK')
+
     const resp = await index.handler(rawEvent, {})
 
     t.teardown(async () => {
-      nock.cleanAll()
+      nock.isDone()
     })
-    t.equal(resp, 'OK')
+
+    t.equal(resp, 'OK', 'expected reponse body')
   })
 
   t.test('failure send message', async (t) => {
-
     nock(config.get('pipeline-url')).persist().post('/').reply(500)
+
     await index.handler(rawEvent, {}, (error) => {
-      t.type(error, 'HTTPError')
+      t.type(error, 'HTTPError', 'expected error type')
     })
 
     t.teardown(async () => {

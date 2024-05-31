@@ -1,9 +1,17 @@
 'use strict'
 
-const got = require('got')
-// eslint-disable-next-line logdna/grouped-require
 const zlib = require('node:zlib')
+const got = require('got')
 const config = require('./config.js')
+
+config.validateEnvVars()
+
+const USER_AGENT = config.get('user-agent')
+const PIPELINE_SOURCE_INGEST_KEY = config.get('pipeline-key')
+const PIPELINE_SOURCE_URL = config.get('pipeline-url')
+const REQUEST_TIMEOUT = config.get('max-request-timeout')
+const REQUEST_RETRY_INTERVAL = config.get('request-retry-interval')
+const REQUEST_RETRY_LIMIT = config.get('max-request-retries')
 
 // Parse the GZipped Log Data
 function parseEvent(event) {
@@ -45,22 +53,22 @@ async function sendLine(payload, callback) {
   const options = {
     body: JSON.stringify(payload)
   , headers: {
-      'user-agent': config.get('user-agent')
-    , 'Authorization': config.get('pipeline-key')
+      'user-agent': USER_AGENT
+    , 'Authorization': PIPELINE_SOURCE_INGEST_KEY
     }
   , timeout: {
-      request: config.get('max-request-timeout')
+      request: REQUEST_TIMEOUT
     }
   }
 
   try {
     const resp = await got.post(
-      config.get('pipeline-url')
+      PIPELINE_SOURCE_URL
     , options
     , {
         retry: {
-          limit: config.get('max-request-retries')
-        , maxRetryAfter: config.get('request-retry-interval')
+          limit: REQUEST_RETRY_LIMIT
+        , maxRetryAfter: REQUEST_RETRY_INTERVAL
         , methods: ['GET', 'POST']
         }
       }
