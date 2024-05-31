@@ -19,6 +19,10 @@ pipeline {
     ansiColor 'xterm'
   }
 
+  environment {
+    GITHUB_TOKEN = credentials('github-api-token')
+  }
+
   triggers {
     issueCommentTrigger(TRIGGER_PATTERN)
   }
@@ -53,17 +57,24 @@ pipeline {
           }
         }
 
-        environment {
-          GITHUB_TOKEN = credentials('github-api-token')
-        }
-
         stages {
           stage('Test') {
             steps {
-              sh 'mkdir -p coverage'
               sh 'npm ci'
-              sh 'npm run lint'
-              sh 'npm run test'
+              sh 'npm test'
+            }
+            post {
+              always {
+                junit checksName: 'Test Results', testResults: 'coverage/*.xml'
+                publishHTML target: [
+                  allowMissing: false,
+                  alwaysLinkToLastBuild: false,
+                  keepAll: true,
+                  reportDir: 'coverage/lcov-report',
+                  reportFiles: 'index.html',
+                  reportName: "coverage-node-v${NODE_VERSION}"
+                ]
+              }
             }
           }
         }
@@ -87,7 +98,6 @@ pipeline {
       }
 
       environment {
-        GITHUB_TOKEN = credentials('github-api-token')
         GIT_BRANCH = "${CURRENT_BRANCH}"
         BRANCH_NAME = "${CURRENT_BRANCH}"
         CHANGE_ID = ""
@@ -95,8 +105,9 @@ pipeline {
 
       steps {
         sh 'npm run package'
-        sh 'npm ci'
+        sh 'npm ci' // WARNING: This is necessary because the package script removed dependendices
         sh "npm run release:dry"
+        sh "test -f dist/mezmo-cloudwatch.zip"
       }
     }
 
@@ -114,15 +125,10 @@ pipeline {
         }
       }
 
-      environment {
-        GITHUB_TOKEN = credentials('github-api-token')
-        NPM_TOKEN = credentials('npm-publish-token')
-      }
-
       steps {
         sh 'npm run package'
-        sh 'npm ci'
-        sh 'npm run release'
+        sh 'npm ci' // WARNING: This is necessary because the package script removed dependendices
+        sh 'npm release'
       }
     }
   }
