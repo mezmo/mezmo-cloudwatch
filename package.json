@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./",
-    "pretest": "npm run lint",
+    "commitlint": "commitlint-mezmo",
+    "pretest": "npm run lint && npm run commitlint",
     "test": "scripts/test-ci.sh",
     "tap": "tap",
     "release": "semantic-release",
@@ -31,6 +32,7 @@
     "got": "^11.8.3"
   },
   "devDependencies": {
+    "@logdna/commitlint-config": "^2.0.0",
     "@semantic-release/github": "^7.2.1",
     "eslint": "^8.19.0",
     "eslint-config-logdna": "^7.0.2",
