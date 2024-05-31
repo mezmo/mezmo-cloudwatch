@@ -1,13 +1,30 @@
+# test artifacts
+.nyc_output
+coverage/
+lib-cov
+*.lcov
+.tap
 
+# IDE files
+.idea
 *.swp
-.DS_Store
-node_modules
+*.vim
+
+# dev files
+*.save
+dist/
 *.zip
-pkg/
-.tap/
+env/
+*.env
+.npm
+.eslintcache/
+.node_repl_history
+node_modules/
+npm-debug.log
 
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
 
-# No Testing Materials
-data
-generateData.js
-.nyc*

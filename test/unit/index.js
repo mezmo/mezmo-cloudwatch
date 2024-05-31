@@ -1,5 +1,8 @@
 'use strict'
 
+process.env.PIPELINE_KEY = 'abc123'
+process.env.PIPELINE_URL = 'https://ingest.pipeline.com'
+
 const {test} = require('tap')
 
 // Internal Modules
