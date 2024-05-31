@@ -10,12 +10,6 @@
     "package": "tools/package.sh",
     "release:dry": "semantic-release --no-ci --dry-run --branches=${GIT_BRANCH:-main}"
   },
-  "release": {
-    "branches": [
-      "main"
-    ],
-    "extends": "semantic-release-config-logdna"
-  },
   "eslintConfig": {
     "root": true,
     "ignorePatterns": [
