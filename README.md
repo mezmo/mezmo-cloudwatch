@@ -13,7 +13,7 @@ The Mezmo AWS CloudWatch integration relies on [AWS Lambda](https://aws.amazon.c
 
 ### Configuration
 #### General Configuration
-If the S3 Lambda is being used to stream from gzipped files:
+If this function is being used to stream from gzipped files:
 1. Set `Timeout` to, at least, `10 seconds`.
 2. Set `Memory` limit to, at least, `128 MB`.
 
