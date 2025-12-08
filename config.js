@@ -6,13 +6,16 @@ const pkg = require('./package.json')
 
 const config = new Config([
   Config
-    .string('pipeline-url')
+    .string('ingestion-url')
     .required()
-    .desc('Pipeline Ingestion URL')
+    .desc('This can be the primary logging endpoint, or a pipeline endpoint for '
+      + 'pre-processing. Examples are `https://logs.mezmo.com` or '
+      + '`https://pipeline.mezmo.com`.')
 , Config
-    .string('pipeline-key')
+    .string('ingestion-key')
     .required()
-    .desc('Your pipeline http source node key')
+    .desc('This can be a standard ingestion key, or an ingestion key associated with '
+      + 'a pipeline source')
 , Config
     .number('max-request-timeout')
     .default(30000)
@@ -29,6 +32,17 @@ const config = new Config([
     .string('user-agent')
     .default(`${pkg.name}/${pkg.version}`)
     .desc('The user-agent header value to use while sending logs')
+, Config
+    .list('tags')
+    .type('string')
+    .desc('Optional tags to attach to each log line sent')
+, Config
+    .string('hostname')
+    .desc('Optional host to attach to each log line')
+, Config
+    .boolean('log-raw-event')
+    .default(false)
+    .desc('See `README.md` for additional details')
 ])
 
 module.exports = config

@@ -1,6 +1,7 @@
 # Mezmo CloudWatch Lambda Function
 
-The Mezmo AWS CloudWatch integration relies on [AWS Lambda](https://aws.amazon.com/documentation/lambda/) to route your [CloudWatch Logs](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) to Mezmo Pipelines.
+The Mezmo AWS CloudWatch integration relies on [AWS Lambda](https://aws.amazon.com/documentation/lambda/) to route your [CloudWatch Logs](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) to Mezmo.
+Users can choose to ingest directly into Log Analysis or to a Pipeline.
 
 ## How to Use
 ### Deploy the Code
@@ -35,11 +36,13 @@ For Execution role, assign a role that has the following policies:
  * [`AWSLambdaBasicExecutionRole`](https://gist.github.com/bernadinm/6f68bfdd015b3f3e0a17b2f00c9ea3f8#file-all_aws_managed_policies-json-L1447-L1473)
 
 #### Environment Variables
- * `PIPELINE_KEY` (required): Your pipeline http source node key.
- * `PIPELINE_URL` (required): Pipeline Ingestion URL
+ * `INGESTION_KEY` (required): Your ingestion key for Log Analysis or a Pipeline source.
+ * `INGESTION_URL` (required): An `https://` ingestion URL for Log Analysis or Pipeline.
+
+See the [full list](./doc/env.md) of environment variables supported in this package.
 
 **Notes**:
-The following optional environment variables can also be used to tune this Lambda function for specific use cases. 
+The following optional environment variables can also be used to tune this Lambda function for specific use cases.
  * `MAX_REQUEST_TIMEOUT` (optional): Time limit (in `milliseconds`) for requests made by this HTTP Client *(Default: 30000)*
  * `MAX_REQUEST_RETRIES` (optional): The maximum number of retries for sending a line when there are network failures *(Default: 5)*
  * `REQUEST_RETRY_INTERVAL` (optional): How frequently (in `seconds`) to retry for sending a line when there are network failures *(Default: 60)*
