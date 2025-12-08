@@ -128,7 +128,7 @@ pipeline {
       steps {
         sh 'npm run package'
         sh 'npm ci' // WARNING: This is necessary because the package script removed dependendices
-        sh 'npm release'
+        sh 'npm run release'
       }
     }
   }
