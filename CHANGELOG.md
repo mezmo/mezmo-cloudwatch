@@ -1,5 +1,30 @@
 ## Changelog
 
+# [2.0.0](https://github.com/mezmo/mezmo-cloudwatch/compare/v1.0.1...v2.0.0) (2025-12-12)
+
+
+### Bug Fixes
+
+* **release**: remove release plugin remapping [fd02424](https://github.com/mezmo/mezmo-cloudwatch/commit/fd024247193395535256aaa9825ef54095c1c7fa) - Eric Satterwhite, closes: [#8](https://github.com/mezmo/mezmo-cloudwatch/issues/8)
+
+
+### Chores
+
+* **deps**: @logdna/commitlint-config@^2.0.0 [76acc8f](https://github.com/mezmo/mezmo-cloudwatch/commit/76acc8f1d7616e0e6f8fc85c124b61d44c9faa82) - Eric Satterwhite, closes: [#8](https://github.com/mezmo/mezmo-cloudwatch/issues/8)
+* **pkg**: Bump support to node@22 [1f1c94c](https://github.com/mezmo/mezmo-cloudwatch/commit/1f1c94c3c90b304474b73afff248f6daad7f8e38) - Darin Spivey, closes: [#10](https://github.com/mezmo/mezmo-cloudwatch/issues/10)
+* **pkg**: Support Log Analysis and deprecate callbacks [08968c9](https://github.com/mezmo/mezmo-cloudwatch/commit/08968c90d6ee61e692d55a85cd5bbc6c6153cc47) - Darin Spivey, closes: [#10](https://github.com/mezmo/mezmo-cloudwatch/issues/10)
+* **test**: including test coverage reporting [cccecbf](https://github.com/mezmo/mezmo-cloudwatch/commit/cccecbfaedceed67750fa372c409dd7590a57fa3) - Eric Satterwhite, closes: [#8](https://github.com/mezmo/mezmo-cloudwatch/issues/8)
+
+
+### Miscellaneous
+
+* Update README.md [17aef54](https://github.com/mezmo/mezmo-cloudwatch/commit/17aef54c15a6584a3d2a0116ac0868552c814a70) - GitHub
+
+
+### **BREAKING CHANGES**
+
+* **pkg:** Callbacks are no longer supported
+
 ## [1.0.1](https://github.com/mezmo/mezmo-cloudwatch/compare/v1.0.0...v1.0.1) (2024-05-31)
 
 
