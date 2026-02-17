@@ -1,5 +1,12 @@
 ## Changelog
 
+## [2.0.1](https://github.com/mezmo/mezmo-cloudwatch/compare/v2.0.0...v2.0.1) (2026-02-17)
+
+
+### Bug Fixes
+
+* **scripts**: include the lib directory in the output zip [029a25f](https://github.com/mezmo/mezmo-cloudwatch/commit/029a25fd8841b959129c7bce58ea458323383c19) - Eric Satterwhite, closes: [#12](https://github.com/mezmo/mezmo-cloudwatch/issues/12)
+
 # [2.0.0](https://github.com/mezmo/mezmo-cloudwatch/compare/v1.0.1...v2.0.0) (2025-12-12)
 
 
