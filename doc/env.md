@@ -24,7 +24,7 @@
 | Name | `ingestion-key` |
 | Environment Variable | `INGESTION_KEY` |
 | Type | `string` |
-| Required | **yes** |
+| Required | **no** |
 | Default | `(none)` |
 | Allows Empty Values | `false` |
 
@@ -39,7 +39,7 @@
 | Name | `ingestion-url` |
 | Environment Variable | `INGESTION_URL` |
 | Type | `string` |
-| Required | **yes** |
+| Required | **no** |
 | Default | `(none)` |
 | Allows Empty Values | `false` |
 
