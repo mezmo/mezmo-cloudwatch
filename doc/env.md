@@ -17,7 +17,7 @@
 
 ### `INGESTION_KEY`
 
-> This can be a standard ingestion key, or an ingestion key associated with a pipeline source
+> A standard ingestion key, or an ingestion key associated with a pipeline source. Required unless INGESTION_SECRET_ID is set.
 
 | Config | Value |
 | --- | --- |
@@ -30,9 +30,24 @@
 
 ***
 
+### `INGESTION_SECRET_ID`
+
+> Secrets Manager secret name or ARN containing INGESTION_KEY and INGESTION_URL. Requires the AWS Parameters and Secrets Lambda Extension.
+
+| Config | Value |
+| --- | --- |
+| Name | `ingestion-secret-id` |
+| Environment Variable | `INGESTION_SECRET_ID` |
+| Type | `string` |
+| Required | no |
+| Default | `(none)` |
+| Allows Empty Values | `false` |
+
+***
+
 ### `INGESTION_URL`
 
-> This can be the primary logging endpoint, or a pipeline endpoint for pre-processing. Examples are `https://logs.mezmo.com` or `https://pipeline.mezmo.com`.
+> This can be the primary logging endpoint, or a pipeline endpoint for pre-processing. Required unless INGESTION_SECRET_ID is set. Examples are `https://logs.mezmo.com` or `https://pipeline.mezmo.com`.
 
 | Config | Value |
 | --- | --- |
@@ -90,6 +105,21 @@
 
 ***
 
+### `PARAMETERS_SECRETS_EXTENSION_HTTP_PORT`
+
+> Local HTTP port for the AWS Parameters and Secrets Lambda Extension
+
+| Config | Value |
+| --- | --- |
+| Name | `parameters-secrets-extension-http-port` |
+| Environment Variable | `PARAMETERS_SECRETS_EXTENSION_HTTP_PORT` |
+| Type | `number` |
+| Required | no |
+| Default | `2773` |
+| Allows Empty Values | `false` |
+
+***
+
 ### `REQUEST_RETRY_INTERVAL`
 
 > How frequently (in `seconds`) to retry for sending a line
@@ -130,7 +160,7 @@
 | Environment Variable | `USER_AGENT` |
 | Type | `string` |
 | Required | no |
-| Default | `@mezmo/cloudwatch/1.0.1` |
+| Default | `@mezmo/cloudwatch/2.0.2` |
 | Allows Empty Values | `false` |
 
 ***
