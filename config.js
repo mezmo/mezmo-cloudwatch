@@ -53,4 +53,10 @@ const config = new Config([
     .desc('See `README.md` for additional details')
 ])
 
+// Environment credentials remain required unless Secrets Manager supplies them.
+if (!config.get('ingestion-secret-id')) {
+  config.rules.get('ingestion-url').required()
+  config.rules.get('ingestion-key').required()
+}
+
 module.exports = config
