@@ -3,26 +3,22 @@
 const zlib = require('node:zlib')
 const got = require('got')
 const config = require('./config.js')
+const {getIngestionConfig, validateIngestionConfig} = require('./lib/ingestion-config.js')
 const {log_analysis, pipeline} = require('./lib/index.js')
 
 config.validateEnvVars()
 
 const USER_AGENT = config.get('user-agent')
-const INGESTION_KEY = config.get('ingestion-key')
-const INGESTION_URL = config.get('ingestion-url')
 const REQUEST_TIMEOUT = config.get('max-request-timeout')
 const REQUEST_RETRY_INTERVAL = config.get('request-retry-interval')
 const REQUEST_RETRY_LIMIT = config.get('max-request-retries')
 
-if (!INGESTION_URL.startsWith('https://')) {
-  const err = new Error('`ingestion-url` must be `https://`')
-  err.code = 'EINVAL'
-  throw err
+if (!config.get('ingestion-secret-id')) {
+  validateIngestionConfig({
+    INGESTION_KEY: config.get('ingestion-key')
+  , INGESTION_URL: config.get('ingestion-url')
+  })
 }
-
-const lib = INGESTION_URL.startsWith('https://pipeline.')
-  ? pipeline
-  : log_analysis
 
 // Parse the GZipped Log Data
 function parseEvent(event) {
@@ -30,14 +26,14 @@ function parseEvent(event) {
 }
 
 // Ship the Logs
-async function sendLine(options) {
+async function sendLine(options, ingestion) {
   const http_options = {
     body: options.body
   , searchParams: options.searchParams
   , headers: {
       'user-agent': USER_AGENT
     , 'Content-Type': 'application/json; charset=UTF-8'
-    , 'apikey': INGESTION_KEY
+    , 'apikey': ingestion.INGESTION_KEY
     }
   , timeout: {
       request: REQUEST_TIMEOUT
@@ -45,7 +41,7 @@ async function sendLine(options) {
   }
 
   const resp = await got.post(
-    INGESTION_URL
+    ingestion.INGESTION_URL
   , http_options
   , {
       retry: {
@@ -60,11 +56,21 @@ async function sendLine(options) {
 
 // Main Handler
 async function handler(event) {
+  const ingestion = await getIngestionConfig()
+  const lib = ingestion.INGESTION_URL.startsWith('https://pipeline.')
+    ? pipeline
+    : log_analysis
   const payload = lib.prepareLogs(parseEvent(event))
   const options = lib.getBodyAndQuery(payload)
 
-  const response_body = await sendLine(options)
-  return response_body
+  try {
+    return await sendLine(options, ingestion)
+  } catch (err) {
+    if (config.get('ingestion-secret-id')) {
+      throw new Error('Unable to send logs using Secrets Manager ingestion configuration')
+    }
+    throw err
+  }
 }
 
 module.exports = {
