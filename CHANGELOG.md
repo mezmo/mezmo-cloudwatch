@@ -1,5 +1,12 @@
 ## Changelog
 
+# [2.1.0](https://github.com/mezmo/mezmo-cloudwatch/compare/v2.0.2...v2.1.0) (2026-10-26)
+
+
+### Features
+
+* support secrets manager ingestion configuration (#18) [5b2d768](https://github.com/mezmo/mezmo-cloudwatch/commit/5b2d768b129bdff4ac22811867f7b119a898b1c7) - GitHub, closes: [#18](https://github.com/mezmo/mezmo-cloudwatch/issues/18) [#18](https://github.com/mezmo/mezmo-cloudwatch/issues/18) [#18](https://github.com/mezmo/mezmo-cloudwatch/issues/18)
+
 ## [2.0.2](https://github.com/mezmo/mezmo-cloudwatch/compare/v2.0.1...v2.0.2) (2026-03-24)
 
 
